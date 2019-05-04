@@ -71,7 +71,7 @@ require( trailingslashit(  get_template_directory() ) . 'functions/meta-boxes.ph
 		// This theme uses wp_nav_menu() in one location.
 		//регистрация меню
 		register_nav_menus( array(
-			'menu-1' => esc_html__( 'Primary', 'wpnewstart' ),
+			'primary' => esc_html__( 'Primary', 'wpnewstart' ),
 		) );
 
 		/*
@@ -176,8 +176,8 @@ add_action( 'widgets_init', 'wpnewstart_widgets_init' );
  * Enqueue scripts and styles.
  */
 
-function wpnewstart_style_scripts() {	
-	//подключение стилей
+//подключение стилей
+function wpnewstart_style() {	
 	wp_enqueue_style( 'style', get_template_directory_uri() . '/style.css' );
 	wp_enqueue_style( 'grid', get_template_directory_uri() . '/css/grid.css' );
 	wp_enqueue_style( 'font', 'http://fonts.googleapis.com/css?family=Roboto:400,500,700' );
@@ -188,14 +188,14 @@ function wpnewstart_style_scripts() {
 	wp_enqueue_style( 'owl-carousel', get_template_directory_uri() . '/css/owl-carousel.css' );	
 	wp_enqueue_style( 'magnific', get_template_directory_uri() . '/css/magnific-popup.css' );	
 	//подкл скриптов
-	if(!is_admin()) {
-		wp_deregister_script('jquery' );
-		wp_register_script('jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js', [], '', true );
-		 wp_enqueue_script( 'jquery');
-	}
+	// if(!is_admin()) {
+	// 	wp_deregister_script('jquery' );
+	// 	wp_register_script('jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js', [], '', true );
+	// 	 wp_enqueue_script( 'jquery');
+	// }
 	//говорит что только после  array('jquery')
-	wp_enqueue_script('jquery_js', get_template_directory_uri() . '/js/jquery.js', array(), '', true);
-	wp_enqueue_script( 'scripts', get_template_directory_uri() . '/js/script.js', array('jquery_js'), '', true );
+	// wp_enqueue_script('jquery_js', get_template_directory_uri() . '/js/jquery.js', array(), '', true);
+	// wp_enqueue_script( 'scripts', get_template_directory_uri() . '/js/script.js', array('jquery_js'), '', true );
 
 	//сцуко не работает
 	// <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -223,16 +223,34 @@ function wpnewstart_style_scripts() {
 
 	// wp_enqueue_script( 'jq-magnific', get_template_directory_uri() . '/js/jquery.magnific-popup.min.js', array('jquery_js'), '', true );
 
+}
+add_action( 'wp_enqueue_scripts', 'wpnewstart_style' );
 
+//подкл скриптов
+function wpnewstart_scripts() {	
+	wp_enqueue_script('jquery_js', get_template_directory_uri() . '/js/jquery.js', array('jquery'), '', true);
+	wp_enqueue_script( 'scripts', get_template_directory_uri() . '/js/script.js', array('jquery'), '', true );
 
-
-
-//скрипт который подтягивае коментарии
+	wp_enqueue_script('jquery_rd_navbar', get_template_directory_uri() . '/js/jquery.rd-navbar.js', array('jquery'), '', true);
+	wp_enqueue_script('superfish', get_template_directory_uri() . '/js/superfish.js', array('jquery'), '', true);
+	wp_enqueue_script('tmstickup', get_template_directory_uri() . '/js/tmstickup.js', array('jquery'), '', true);
+	wp_enqueue_script( 'jq-magnific', get_template_directory_uri() . '/js/jquery.magnific-popup.min.js', array('jquery'), '', true );
+// 
+	//скрипт который подтягивае коментарии
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
 }
-add_action( 'wp_enqueue_scripts', 'wpnewstart_style_scripts' );
+add_action( 'wp_enqueue_scripts', 'wpnewstart_scripts' );
+
+//фильтр and function для присвоения класса активноу ли
+function artbt_filter_current_item_menu_header($classes, $item) {
+if ( in_array('current-menu-item', $classes) ) {
+	$classes[] = 'active';
+}
+return $classes;
+}
+add_filter('nav_menu_css_class', ' artbt_filter_current_item_menu_header' );
 
 /**
  * Implement the Custom Header feature.

@@ -57,7 +57,6 @@ function custom_theme_options() {
 			    'type'         => 'tab',
 				'section'      => 'header',			
 			),
-
 			array(
 				'id'           => 'logo_upload',
 				'label'        => 'Логотип',
@@ -73,7 +72,6 @@ function custom_theme_options() {
 				// 'condition'    => '',
 				// 'operator'     => 'and',
 			),
-
 			array(
 				'id'           => 'desc_on_off',
 				'label'        => 'Выключение описания сайта',
@@ -123,7 +121,7 @@ function custom_theme_options() {
 					'id'           => 'header_feedback_on_off',
 					'label'        => 'Включение/выключение обратного звонка',
 					'desc'         => '',
-					'std'          => 'on',
+					'std'          => 'off',
 					'type'         => 'on-off',
 					'section'      => 'header',
 				),

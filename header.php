@@ -97,10 +97,53 @@
 		</ol>
 	</fieldset>
 </form> -->
+
+
             <div id="stuck_container" class="stuck_container">
                 <div class="container">
                     <nav class="nav">
-                        <ul data-type="navbar" class="sf-menu">
+                    <?php 
+     $args = [
+         'theme_location' =>'primary',
+       //на всяк [] тоже самое что array()
+    //    'menu'            => '[$primary]', 
+       //menuTop это чтоб меню отображалось как в админке,по-ум по-алф
+
+       'container'       => '',
+       'container_class' => '',
+       'container_id'    => '',
+       //если пустые кавычти то вп ничего не выводит
+       // 'items_wrap' => '%3$s',-не работает
+       'menu_class'      => 'sf-menu', 
+       'menu_id'         => '',
+       'echo'            => true,
+       'fallback_cb'     => 'wp_page_menu',
+       'before'          => '',
+       'after'           => '',
+       'link_before'     => '',
+       'link_after'      => '',
+       'items_wrap'      => '<ul id="%1$s" data-type="navbar" class="%2$s">%3$s</ul>',
+       //это всё что в юл
+                        
+       'depth'            => 0,//глубина вложения
+       'walker'           =>''
+   ];
+   
+//    // Добавляем классы ссылкам активным
+//    //https://wp-kama.ru/hook/nav_menu_link_attributes
+//        add_filter( 'nav_menu_link_attributes', 'filter_nav_menu_link_attributes', 10,4 );
+//        function filter_nav_menu_link_attributes( $atts, $item, $args, $depth ) { 
+//            if ( $item->current ) {
+//                $atts['class'] .= 'active';
+//            }
+
+//            return $atts;
+//        }
+  
+
+
+wp_nav_menu ($args);?>
+                        <!-- <ul data-type="navbar" class="sf-menu">
                             <li class="active"><a href="./">Home</a>
                             </li>
                             <li><a href="index-1.html">About</a>
@@ -124,10 +167,11 @@
                             </li>
                             <li><a href="index-4.html">Contacts</a>
                             </li>
-                        </ul>
+                        </ul> -->
                     </nav>
                 </div>
             </div>
+            
         </header>
 
 

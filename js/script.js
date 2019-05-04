@@ -7,6 +7,17 @@ function isIE() {
     var myNav = navigator.userAgent.toLowerCase();
     return (myNav.indexOf('msie') != -1) ? parseInt(myNav.split('msie')[1]) : false;
 };
+
+
+
+jQuery(function ($) {
+    $(document).ready(function () {
+        //enabling stickUp on the '.navbar-wrapper' class
+        $('#stuck_container').TMStickUp({});
+    });
+});
+
+
 // //сцуко не работает!!!!
 // JQuery(document).ready(function () {
 //     $('.feedback-form').magnificPopup({
@@ -50,17 +61,23 @@ include('js/jquery.easing.1.3.js');
 
 /* Stick up menus
  ========================================================*/
-;
-(function ($) {
-    var o = $('html');
-    if (o.hasClass('desktop')) {
-        include('js/tmstickup.js');
+// ;
+// (function ($) {
+//     var o = $('html');
+//     if (o.hasClass('desktop')) {
+//         include('js/tmstickup.js');
 
-        $(document).ready(function () {
-            $('#stuck_container').TMStickUp({})
-        });
-    }
-})(jQuery);
+//         $(document).ready(function () {
+//             $('#stuck_container').TMStickUp({})
+//         });
+//     }
+// })(jQuery);
+// jQuery(function ($) {
+//     $(document).ready(function () {
+
+//         $('#stuck_container').TMStickUp();
+//     });
+// });
 
 /* ToTop
  ========================================================*/
@@ -120,17 +137,17 @@ include('js/jquery.easing.1.3.js');
 
 /* Superfish menus
  ========================================================*/
-;
-(function ($) {
-    include('js/superfish.js');
-})(jQuery);
+// ;
+// (function ($) {
+//     include('js/superfish.js');
+// })(jQuery);
 
 /* Navbar
  ========================================================*/
-;
-(function ($) {
-    include('js/jquery.rd-navbar.js');
-})(jQuery);
+// ;
+// (function ($) {
+//     include('js/jquery.rd-navbar.js');
+// })(jQuery);
 
 
 /* Google Map
