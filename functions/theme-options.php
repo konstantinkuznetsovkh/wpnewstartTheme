@@ -110,7 +110,41 @@ function custom_theme_options() {
 				'section'      => 'header',			
 			),
 
+		
+			array(
+				'id'           => 'header_feedback_tab',
+				'label'        => 'Обратная связь',
+				'desc'         => '',
+			    'type'         => 'tab',
+				'section'      => 'header',			
+			),
+				//обязательно в коде или после кода секции к которой привязываем
+				array(
+					'id'           => 'header_feedback_on_off',
+					'label'        => 'Включение/выключение обратного звонка',
+					'desc'         => '',
+					'std'          => 'on',
+					'type'         => 'on-off',
+					'section'      => 'header',
+				),
+			array(
+				'id'           => 'feedback_title',
+				'label'        => 'Заголовок',
+				'type'         => 'text',
+				'section'      => 'header',	
+				'condition'    => 'header_feedback_on_off:is(on)',		
+			),
+			array(
+				'id'           => 'feedback_form',
+				'label'        => 'Форма обратной связи',
+				'desc'         => 'Добавте сюда шорт код из плагина Contact Form 7',
+				'type'         => 'text',
+				'section'      => 'header',
 
+				//зависимость ставятся для того чтоб пропадало с таба для визуального эфекта
+				'condition'    => 'header_feedback_on_off:is(on)',			
+			),
+		
 
 
 			// примеры настроек

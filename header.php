@@ -54,7 +54,49 @@
                 <p><?php echo ot_get_option('contact_open');?></p>
                 <!-- One of our representatives will happily contact you within 24 hours. For urgent needs call us at -->
                 <?php } ?>
+
+
+
+
+
+              <!-- вставляем вывод конт формы -->
+                <?php 
+                if (ot_get_option( 'header_feedback_on_off')  != 'off') { ?>
+               <p> <a href="#header-feedback-form" class="feedback-form"><?php echo ot_get_option('feedback_title');?></a>     </p>                 
+                <div id="header-feedback-form" class="white-popup-block mfp-hide ">
+                    <?php if (ot_get_option( 'feedback_form' )) { ?>
+                    <?php echo do_shortcode( ot_get_option('feedback_form')) ;?>               <!-- One of our representatives will happily contact you within 24 hours. For urgent needs call us at -->
+                    <?php } ?>
+                </div>               
+                <?php } ?>
             </div>
+            
+            <!-- <a class="popup-with-form" href="#test-form">Open form</a>
+
+            <form id="test-form" class="mfp-hide white-popup-block">
+	<h1>Form</h1>
+	<fieldset style="border:0;">
+		<p>Lightbox has an option to automatically focus on the first input. It's strongly recommended to use <code>inline</code> popup type for lightboxes with form instead of <code>ajax</code> (to keep entered data if the user accidentally refreshed the page).</p>
+		<ol>
+			<li>
+				<label for="name">Name</label>
+				<input id="name" name="name" type="text" placeholder="Name" required="">
+			</li>
+			<li>
+				<label for="email">Email</label>
+				<input id="email" name="email" type="email" placeholder="example@domain.com" required="">
+			</li>
+			<li>
+				<label for="phone">Phone</label>
+				<input id="phone" name="phone" type="tel" placeholder="Eg. +447500000000" required="">
+			</li>
+			<li>
+				<label for="textarea">Textarea</label><br>
+				<textarea id="textarea">Try to resize me to see how popup CSS-based resizing works.</textarea>
+			</li>
+		</ol>
+	</fieldset>
+</form> -->
             <div id="stuck_container" class="stuck_container">
                 <div class="container">
                     <nav class="nav">

@@ -1,12 +1,32 @@
 function include(scriptUrl) {
-    document.write('<script src="' + scriptUrl + '"></script>');
+    var road = 'WpNewStart/wp-content/themes/';
+    document.write('<script src="' + road + scriptUrl + '"></script>');
 }
 
 function isIE() {
     var myNav = navigator.userAgent.toLowerCase();
     return (myNav.indexOf('msie') != -1) ? parseInt(myNav.split('msie')[1]) : false;
 };
+// //сцуко не работает!!!!
+// JQuery(document).ready(function () {
+//     $('.feedback-form').magnificPopup({
+//         type: 'inline',
+//         preloader: false,
+//         // focus: '#name',
 
+//         // When elemened is focused, some mobile browsers in some cases zoom in
+//         // It looks not nice, so we disable it:
+//         callbacks: {
+//             beforeOpen: function () {
+//                 if ($(window).width() < 700) {
+//                     this.st.focus = false;
+//                 } else {
+//                     this.st.focus = '#name';
+//                 }
+//             }
+//         }
+//     });
+// });
 /* cookie.JS
  ========================================================*/
 include('js/jquery.cookie.js');
@@ -65,7 +85,7 @@ include('js/jquery.easing.1.3.js');
 (function ($) {
     var o = $('[data-equal-group]');
     if (o.length > 0) {
-        // include('js/jquery.equalheights.js');
+        include('js/jquery.equalheights.js');
     }
 })(jQuery);
 
@@ -75,8 +95,8 @@ include('js/jquery.easing.1.3.js');
 (function ($) {
     var o = $('html');
     if (o.hasClass('desktop')) {
-        // include('js/jquery.mousewheel.min.js');
-        // include('js/jquery.simplr.smoothscroll.min.js');
+        include('js/jquery.mousewheel.min.js');
+        include('js/jquery.simplr.smoothscroll.min.js');
 
         $(document).ready(function () {
             $.srSmoothscroll({
@@ -102,14 +122,14 @@ include('js/jquery.easing.1.3.js');
  ========================================================*/
 ;
 (function ($) {
-    // include('js/superfish.js');
+    include('js/superfish.js');
 })(jQuery);
 
 /* Navbar
  ========================================================*/
 ;
 (function ($) {
-    // include('js/jquery.rd-navbar.js');
+    include('js/jquery.rd-navbar.js');
 })(jQuery);
 
 
@@ -120,7 +140,7 @@ include('js/jquery.easing.1.3.js');
     var o = document.getElementById("google-map");
     if (o) {
         // include('//maps.google.com/maps/api/js?sensor=false');
-        // include('js/jquery.rd-google-map.js');
+        include('js/jquery.rd-google-map.js');
 
         $(document).ready(function () {
             var o = $('#google-map');
@@ -297,7 +317,7 @@ document.write('<meta name="viewport" content="width=device-width,initial-scale=
     var o = $('#camera');
     if (o.length > 0) {
         if (!(isIE() && (isIE() > 9))) {
-            // include('js/jquery.mobile.customized.min.js');
+            include('js/jquery.mobile.customized.min.js');
         }
 
         include('js/camera.js');
@@ -327,7 +347,7 @@ document.write('<meta name="viewport" content="width=device-width,initial-scale=
 (function ($) {
     var o = $('.owl-carousel');
     if (o.length > 0) {
-        // include('js/owl.carousel.min.js');
+        include('js/owl.carousel.min.js');
         $(document).ready(function () {
             o.owlCarousel({
                 margin: 30,
@@ -355,7 +375,8 @@ document.write('<meta name="viewport" content="width=device-width,initial-scale=
 
 /* Mailform
 =============================================*/
-// ;(function ($) {
-//     include('js/mailform/jquery.form.min.js');
-//     include('js/mailform/jquery.rd-mailform.min.c.js');
-// })(jQuery);
+;
+(function ($) {
+    include('js/mailform/jquery.form.min.js');
+    include('js/mailform/jquery.rd-mailform.min.c.js');
+})(jQuery);
