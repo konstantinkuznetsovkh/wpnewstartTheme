@@ -150,6 +150,38 @@ function wpnewstart_widgets_init() {
 		'before_title'  => '<h2 class="widget-title">',
 		'after_title'   => '</h2>',
 	) );
+
+//создание виджетов для футера
+	register_sidebar( array(
+		'name'          => 'Подвал слева',
+		'id'            => 'footer-left',
+		'description'   => '',
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<div class="widget-title">',
+		'after_title'   => '</div>',
+	) );
+
+register_sidebar( array(
+		'name'          => 'Подвал центр',
+		'id'            => 'footer-center',
+		'description'   => '',
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<div class="widget-title">',
+		'after_title'   => '</div>',
+	) );
+
+
+	register_sidebar( array(
+		'name'          => 'Подвал справо',
+		'id'            => 'footer-right',
+		'description'   => '',
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => '<div class="widget-title">',
+		'after_title'   => '</div>',
+	) ); 
 }
 add_action( 'widgets_init', 'wpnewstart_widgets_init' );
 
@@ -246,7 +278,7 @@ function wpnewstart_scripts() {
 add_action( 'wp_enqueue_scripts', 'wpnewstart_scripts' );
 
 //фильтр and function для присвоения класса активноу ли
-function artbt_filter_current_item_menu_header($classes, $item) {
+function artbt_filter_current_item_menu_header($classes) {
 if ( in_array('current-menu-item', $classes) ) {
 	$classes[] = 'active';
 }

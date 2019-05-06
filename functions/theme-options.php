@@ -45,6 +45,10 @@ function custom_theme_options() {
 				'title' =>'Шапка',
 			),
 			array(
+				'id'    => 'footer',
+				'title' =>'Подвал',
+			),
+			array(
 				'id'    => 'option_types',
 				'title' => __( 'Option Types', 'theme-text-domain' ),
 			),
@@ -142,7 +146,14 @@ function custom_theme_options() {
 				//зависимость ставятся для того чтоб пропадало с таба для визуального эфекта
 				'condition'    => 'header_feedback_on_off:is(on)',			
 			),
-		
+
+			// footer
+			array(
+				'id'           => 'copyright_footer',
+				'label'        => 'Копирайт',
+				'type'         => 'text',
+				'section'      => 'footer',			
+			),
 
 
 			// примеры настроек
