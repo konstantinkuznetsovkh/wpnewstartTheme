@@ -1,21 +1,11 @@
 <?php
-/**
- * wpnewstart functions and definitions
- *
- * @link https://developer.wordpress.org/themes/basics/theme-functions/
- *
- * @package wpnewstart
- */
-
-
-/**
- * Required: set 'ot_theme_mode' filter to true.
- */
-//подключаем optionTree
+//подключаем  настройки OptionTree
 add_filter( 'ot_theme_mode', '__return_true' );
 add_filter( 'ot_show_new_layout', '__return_false' );
-add_filter( 'ot_show_pages', '__return_false' );//убирает из админ панели плагин
-
+add_filter( 'ot_show_pages', '__return_false' );//убирает из админ панели плагин?если true то плагин будет виден в wp admin panel
+require( trailingslashit( get_template_directory() ) . 'option-tree/ot-loader.php' );
+require( trailingslashit(  get_template_directory() ) . 'functions/theme-options.php');
+require( trailingslashit(  get_template_directory() ) . 'functions/meta-boxes.php');//метабоксы это произвольные поля
 //перенесем наше меню настроек плагина вниз админы
 function theme_options_parent($parent) {
 	$parent = '';
@@ -23,13 +13,6 @@ function theme_options_parent($parent) {
 }
 add_filter('ot_theme_options_parent_slug', 'theme_options_parent', 20);
 
-/**
- * Required: include OptionTree.
- */
-require( trailingslashit( get_template_directory() ) . 'option-tree/ot-loader.php' );
-
-require( trailingslashit(  get_template_directory() ) . 'functions/theme-options.php');
-require( trailingslashit(  get_template_directory() ) . 'functions/meta-boxes.php');
 // require( trailingslashit(  get_template_directory() ) . 'meta-boxes.php');
 // if ( ! function_exists( 'wpnewstart_setup' ) ) :
 	//функция поддержки дочерних тем
@@ -286,30 +269,43 @@ return $classes;
 }
 add_filter('nav_menu_css_class', ' artbt_filter_current_item_menu_header' );
 
+
+//фильт котрорый будет убирать на стр класс паге
+function wpnewstart_remove_page_class ($classes) {
+	if($key = array_search('page', $classes)) {
+		unset( $classes[$key] );
+	}
+		return $classes;
+	}
+add_filter('body_class', 'wpnewstart_remove_page_class');
+
+
+
+
 /**
  * Implement the Custom Header feature.
  */
 //в нашем случае не нужны подключение файлов если сразу откл появятся ошибки
-require get_template_directory() . '/inc/custom-header.php';
+// require get_template_directory() . '/inc/custom-header.php';
 
 /**
  * Custom template tags for this theme.
  */
-require get_template_directory() . '/inc/template-tags.php';
+// require get_template_directory() . '/inc/template-tags.php';
 
 /**
  * Functions which enhance the theme by hooking into WordPress.
  */
-require get_template_directory() . '/inc/template-functions.php';
+// require get_template_directory() . '/inc/template-functions.php';
 // 
 /**
  * Customizer additions.
  */
-require get_template_directory() . '/inc/customizer.php';
+// require get_template_directory() . '/inc/customizer.php';
 
 /**
  * Load Jetpack compatibility file.
  */
-if ( defined( 'JETPACK__VERSION' ) ) {
-	require get_template_directory() . '/inc/jetpack.php';
-}
+// if ( defined( 'JETPACK__VERSION' ) ) {
+	// require get_template_directory() . '/inc/jetpack.php';
+// }
